@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 20px; padding: 30px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        h1 { color: #333; margin-bottom: 10px; font-size: 2.5em; }
+        .subtitle { color: #666; margin-bottom: 30px; font-size: 1.1em; }
+        .author { color: #764ba2; font-weight: bold; margin-bottom: 20px; padding: 10px; background: #f0f0f0; border-radius: 10px; display: inline-block; }
+        .btn { padding: 15px 40px; font-size: 18px; cursor: pointer; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 50px; box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); transition: all 0.3s; font-weight: bold; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6); }
+        .metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .metric-card { background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .metric-value { font-size: 2.5em; font-weight: bold; color: #333; }
+        .metric-label { color: #666; margin-top: 5px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #667eea; color: white; font-weight: bold; }
+        tr:hover { background: #f5f5f5; }
+        .critical { color: #e74c3c; font-weight: bold; }
+        .warning { color: #f39c12; }
+        .findings-list { list-style: none; margin: 20px 0; }
+        .findings-list li { padding: 15px; margin: 10px 0; background: #f9f9f9; border-left: 5px solid; border-radius: 5px; }
+        .findings-list li.critical { border-left-color: #e74c3c; }
+        .findings-list li.warning { border-left-color: #f39c12; }
+        .charts-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0; }
+        .chart { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center; }
+        .chart img { max-width: 100%; height: auto; border-radius: 10px; }
+        .tasks-list { background: #f8f9fa; padding: 20px; border-radius: 15px; margin: 20px 0; }
+        .tasks-list h3 { color: #333; margin-bottom: 15px; }
+        .task-item { padding: 10px; margin: 5px 0; background: white; border-radius: 5px; display: flex; align-items: center; }
+        .task-checkbox { margin-right: 10px; }
+        .timestamp { color: #999; font-style: italic; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛡️ {{ title }}</h1>
+        <div class="subtitle">Угроза неопределенности ответственности в облачных сервисах</div>
+        <div class="author">👤 Разработчик: {{ author }}</div>
+
+        <div class="tasks-list">
+            <h3>📋 Этапы проверки безопасности (7 задач):</h3>
+            <div class="task-item"><input type="checkbox" class="task-checkbox"> 1. Анализ публичных хранилищ данных</div>
+            <div class="task-item"><input type="checkbox" class="task-checkbox"> 2. Проверка прав доступа IAM</div>
+            <div class="task-item"><input type="checkbox" class="task-checkbox"> 3. Мониторинг соблюдения SLA провайдера</div>
+            <div class="task-item"><input type="checkbox" class="task-checkbox"> 4. Аудит шифрования данных</div>
+            <div class="task-item"><input type="checkbox" class="task-checkbox"> 5. Расчет метрик безопасности</div>
+            <div class="task-item"><input type="checkbox" class="task-checkbox"> 6. Визуализация результатов</div>
+            <div class="task-item"><input type="checkbox" class="task-checkbox"> 7. Формирование отчета и рекомендаций</div>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn">🔍 Начать проверку безопасности</button>
+        </form>
+
+        {% if has_results %}
+        <h2 style="margin-top: 40px;">📊 Результаты проверки безопасности</h2>
+
+        <div class="metrics-grid">
+            <div class="metric-card"><div class="metric-value">{{ metrics.risk_score }}/100</div><div class="metric-label">Risk Score</div></div>
+            <div class="metric-card"><div class="metric-value">{{ metrics.compliance_percent }}%</div><div class="metric-label">Соответствие требованиям</div></div>
+            <div class="metric-card"><div class="metric-value critical">{{ metrics.critical_findings }}</div><div class="metric-label">Критические нарушения</div></div>
+            <div class="metric-card"><div class="metric-value warning">{{ metrics.warning_findings }}</div><div class="metric-label">Предупреждения</div></div>
+        </div>
+
+        <table>
+            <tr><th>Показатель</th><th>Значение</th></tr>
+            <tr><td>Проблемы поставщика</td><td>{{ metrics.provider_issues }}</td></tr>
+            <tr><td>Проблемы потребителя</td><td>{{ metrics.consumer_issues }}</td></tr>
+            <tr><td>Всего нарушений</td><td>{{ metrics.total_findings }}</td></tr>
+        </table>
+
+        <h3>🚨 Список выявленных нарушений:</h3>
+        <ul class="findings-list">{{ findings_html|safe }}</ul>
+
+        <div class="charts-container">
+            <div class="chart"><h3>Распределение ответственности</h3><img src="/static/charts/responsibility.png" alt="График ответственности"></div>
+            <div class="chart"><h3>Критичность нарушений</h3><img src="/static/charts/severity.png" alt="График критичности"></div>
+        </div>
+
+        <div class="chart"><h3>Уровень риска</h3><img src="/static/charts/risk.png" alt="Уровень риска" style="max-width: 100%;"></div>
+
+        <div class="timestamp">📅 Последнее обновление: {{ metrics.timestamp }}</div>
+        {% endif %}
+
+        <div style="margin-top: 30px; padding: 20px; background: #e8f4f8; border-radius: 10px;">
+            <h3>📌 Информация</h3>
+            <p><strong>Шаблон:</strong> Контейнер безопасности облака (Вариант 32)</p>
+            <p><strong>Требования:</strong> Django 4.2+, matplotlib</p>
+            <p><strong>Лицензия:</strong> MIT</p>
+        </div>
+    </div>
+</body>
+</html>
