@@ -55,10 +55,10 @@ function detectFrame() {
   if (!modelWorkerId) return requestAnimationFrame(detectFrame);
 
   // Запуск инференса на текущем видеокадре
+  // inferEngine.infer() - асинхронный метод, принимает идентификатор модели и изображение
+  // CVImage - обёртка библиотеки inferencejs для представления изображений
+  // predictions - массив результатов распознавания
   inferEngine.infer(modelWorkerId, new inferencejs.CVImage(video)).then(function(predictions) {
-    // inferEngine.infer() - асинхронный метод, принимает идентификатор модели и изображение
-    // CVImage - обёртка библиотеки inferencejs для представления изображений
-    // predictions - массив результатов распознавания
 
     // БЛОК ПЕРВОНАЧАЛЬНОЙ НАСТРОЙКИ КАНВАСА
     if (!canvas_painted) {

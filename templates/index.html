@@ -3,8 +3,8 @@
 
 <head>
   <!-- БЛОК МЕТАДАННЫХ -->
+  <!-- Установка кодировки страницы -->
   <meta charset="UTF-8">
-   <!-- Установка кодировки страницы -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Адаптивное отображение на мобильных устройствах -->
   <title>Roboflow + Replit Example</title>
@@ -12,7 +12,7 @@
   <!-- БЛОК ПОДКЛЮЧЕНИЯ БИБЛИОТЕКИ COMPUTER VISION -->
   <!-- Загрузка inferencejs, скрипта для запуска модели компьютерного зрения в браузере -->
   <script src="https://cdn.jsdelivr.net/npm/inferencejs"></script>
-  <!-- БЛОК ПОДКЛЮЧЕНИЯ СТИЛЕЙ -->
+<!-- БЛОК ПОДКЛЮЧЕНИЯ СТИЛЕЙ -->
   <link rel="stylesheet" href="/static/styles.css" />
   <!-- БЛОК КОНФИГУРАЦИИ МОДЕЛИ -->
   <script>
@@ -57,15 +57,15 @@
     <section class="infer-widget">
       <canvas width="640" height="480" id="video_canvas"></canvas>
       <!-- Канвас размером 640x480 пикселей для отрисовки ограничивающих рамок -->
+      <!-- БЛОК НАСТРОЕК ПОРОГА УВЕРЕННОСТИ -->
     </section>
-    <!-- БЛОК НАСТРОЕК ПОРОГА УВЕРЕННОСТИ -->
     <section id="settings">
       <label for="confidence">Prediction Confidence %</label><br>
        <!-- Ползунок для регулировки порога уверенности -->
       <input type="range" min="1" max="100" value="60" class="slider" id="confidence">
       <!-- Ползунок от 1% до 100%, начальное значение 60% -->
+      <!-- БЛОК ССЫЛОК НА ВНЕШНИЕ РЕСУРСЫ -->
     </section>
-    <!-- БЛОК ССЫЛОК НА ВНЕШНИЕ РЕСУРСЫ -->
     <section class="links">
       <a href="https://blog.roboflow.com/getting-started-with-roboflow/" class="styled-button">Build a Custom Model</a>
       <a href="https://universe.roboflow.com" class="styled-button styled-button-turqouise">Explore 50k+
