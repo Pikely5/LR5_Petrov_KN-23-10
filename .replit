@@ -1,37 +1,70 @@
-# The command that runs the program. If the interpreter field is set, it will have priority and this run command will do nothing
+# БЛОК КОМАНДЫ ЗАПУСКА
+# Команда, которая запускает программу. Если установлено поле interpreter, оно будет иметь приоритет, и эта команда запуска выполнена не будет
 run = "python3 main.py"
+# Запуск основного файла приложения main.py с использованием интерпретатора Python 3
 
-# The primary language of the repl. There can be others, though!
+# БЛОК ОПРЕДЕЛЕНИЯ ЯЗЫКА И ТОЧКИ ВХОДА
+# Основной язык реплики. Могут быть и другие
 language = "python3"
+# Указание Python 3 как основного языка программирования проекта
 entrypoint = "main.py"
-# A list of globs that specify which files and directories should
-# be hidden in the workspace.
-hidden = ["venv", ".config", "**/__pycache__", "**/.mypy_cache", "**/*.pyc"]
-modules = ["python-3.10"]
+# Точка входа в приложение - файл, с которого начинается выполнение программы
 
-# Specifies which nix channel to use when building the environment.
+# БЛОК СКРЫТЫХ ФАЙЛОВ И ДИРЕКТОРИЙ
+# Список glob-шаблонов, определяющих, какие файлы и директории должны быть скрыты в рабочем пространстве
+hidden = ["venv", ".config", "**/__pycache__", "**/.mypy_cache", "**/*.pyc"]
+# venv - директория виртуального окружения Python
+# .config - директория конфигурационных файлов
+# **/__pycache__ - все директории кэша Python (во всех подпапках)
+# **/.mypy_cache - все директории кэша статического анализатора mypy
+# **/*.pyc - все скомпилированные байт-кодом файлы Python
+
+# БЛОК ПОДКЛЮЧАЕМЫХ МОДУЛЕЙ
+modules = ["python-3.10"]
+# Указание версии Python 3.10 в качестве используемого модуля
+
+# БЛОК НАСТРОЙКИ КАНАЛА NIX
+# Определяет, какой канал nix использовать при сборке окружения
 [nix]
 channel = "stable-22_11"
+# Использование стабильного канала Nix версии 22.11
 packages = ["gdb"]
+# Установка отладчика GNU Debugger (gdb) как дополнительного системного пакета
 
+# БЛОК ПЕРЕМЕННЫХ ОКРУЖЕНИЯ
 [env]
+# Секция для определения переменных окружения (в данном проекте не заданы)
 
-# Enable unit tests. This is only supported for a few languages.
+# БЛОК НАСТРОЙКИ МОДУЛЬНОГО ТЕСТИРОВАНИЯ
+# Включение модульных тестов. Поддерживается только для нескольких языков
 [unitTest]
 language = "python3"
+# Указание языка для запуска модульных тестов - Python 3
 
-# These are the files that need to be preserved when this 
-# language template is used as the base language template
-# for Python repos imported from GitHub
+# БЛОК ИМПОРТА ИЗ GITHUB
+# Файлы, которые необходимо сохранить, когда этот языковой шаблон используется
+# в качестве базового для Python-репозиториев, импортированных из GitHub
 [gitHubImport]
 requiredFiles = [".replit", "replit.nix", ".config", "venv"]
+# Список обязательных файлов и папок, сохраняемых при импорте:
+# .replit - конфигурация Replit
+# replit.nix - системные зависимости Nix
+# .config - директория конфигураций
+# venv - виртуальное окружение Python
 
+# БЛОК НАСТРОЙКИ РАЗВЁРТЫВАНИЯ
 [deployment]
 run = ["sh", "-c", "python3 main.py"]
+# Команда для запуска при развёртывании: использование оболочки sh для выполнения python3 main.py
 
+# БЛОК ПРОБРОСА ПОРТОВ
 [[ports]]
 localPort = 5000
+# Локальный порт, на котором работает приложение внутри Replit
 externalPort = 80
+# Внешний порт, через который приложение доступно из интернета (стандартный HTTP-порт)
 
+# БЛОК НАСТРОЙКИ АГЕНТА
 [agent]
 expertMode = true
+# Включение экспертного режима агента Replit, открывающего расширенные возможности управления средой

@@ -2,37 +2,44 @@
 <html>
 
 <head>
+  <!-- БЛОК МЕТАДАННЫХ -->
   <meta charset="UTF-8">
-
+   <!-- Установка кодировки страницы -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <!-- Адаптивное отображение на мобильных устройствах -->
   <title>Roboflow + Replit Example</title>
-
-  <!-- Load roboflow.js, the script that will handle loading and running our computer vision model in the browser -->
+  <!-- Заголовок вкладки браузера -->
+  <!-- БЛОК ПОДКЛЮЧЕНИЯ БИБЛИОТЕКИ COMPUTER VISION -->
+  <!-- Загрузка inferencejs, скрипта для запуска модели компьютерного зрения в браузере -->
   <script src="https://cdn.jsdelivr.net/npm/inferencejs"></script>
-  
+  <!-- БЛОК ПОДКЛЮЧЕНИЯ СТИЛЕЙ -->
   <link rel="stylesheet" href="/static/styles.css" />
-
+  <!-- БЛОК КОНФИГУРАЦИИ МОДЕЛИ -->
   <script>
-    // Replace the key below with your Roboflow publishable key
+    // Замените ключ ниже на ваш публичный ключ Roboflow
     var publishable_key = "rf_l8GLzZgLQL6gZLAin1iU";
 
-    // Change these values to set your model name, version, and the
-    // confidence threshold that must be met for the model to return
-    // a prediction.
+    // Измените эти значения для установки имени модели, версии и
+    // порога уверенности, который должен быть достигнут для возврата
+    // моделью предсказания.
 
-    // We recommend setting a low CONFIDENCE_THRESHOLD value while testing
-    // and filtering out predictions by confidence level using the
-    //"Prediction Confidence %" filter
+    // Рекомендуем устанавливать низкое значение CONFIDENCE_THRESHOLD при тестировании
+    // и фильтровать предсказания по уровню уверенности с помощью
+    // фильтра "Prediction Confidence %"
 
     const CONFIDENCE_THRESHOLD = 0.1;
+    // Базовый порог уверенности модели (10%)
     const MODEL_NAME = "microsoft-coco";
+    // Название предобученной модели (80 классов объектов)
     const MODEL_VERSION = 9;
+    // Версия модели
   </script>
 </head>
 
 <body>
+  <!-- БЛОК ОСНОВНОГО КОНТЕНТА -->
   <main>
+    <!-- БЛОК ЗАГОЛОВКА И ОПИСАНИЯ -->
     <h1>Roboflow + Replit Web Example 🚀</h1>
     <p>Roboflow enables you to build and run custom computer vision models in your browser, on your device (i.e. NVIDIA
       Jetson, Luxonis OAK, via Docker), and via API.
@@ -43,26 +50,29 @@
 
     <p>Using the demo below, you can identify <a href="https://universe.roboflow.com/jacob-solawetz/microsoft-coco">80
         different objects</a> using your webcam, from people to chairs to cups.</p>
-
+    <!-- БЛОК ИНДИКАТОРА ЗАГРУЗКИ -->
     <p id="loading">Loading...</p>
-
-    <!-- The canvas below is required -->
+    <!-- БЛОК КАНВАСА ДЛЯ ВЫВОДА РЕЗУЛЬТАТОВ -->
+    <!-- Канвас, необходимый для отображения результатов распознавания -->
     <section class="infer-widget">
       <canvas width="640" height="480" id="video_canvas"></canvas>
+      <!-- Канвас размером 640x480 пикселей для отрисовки ограничивающих рамок -->
     </section>
-
+    <!-- БЛОК НАСТРОЕК ПОРОГА УВЕРЕННОСТИ -->
     <section id="settings">
       <label for="confidence">Prediction Confidence %</label><br>
+       <!-- Ползунок для регулировки порога уверенности -->
       <input type="range" min="1" max="100" value="60" class="slider" id="confidence">
+      <!-- Ползунок от 1% до 100%, начальное значение 60% -->
     </section>
-
+    <!-- БЛОК ССЫЛОК НА ВНЕШНИЕ РЕСУРСЫ -->
     <section class="links">
       <a href="https://blog.roboflow.com/getting-started-with-roboflow/" class="styled-button">Build a Custom Model</a>
       <a href="https://universe.roboflow.com" class="styled-button styled-button-turqouise">Explore 50k+
         Models and Datasets</a>
     </section>
 
-    <!-- Load our application logic -->
+    <!-- БЛОК ПОДКЛЮЧЕНИЯ ЛОГИКИ ПРИЛОЖЕНИЯ -->
     <script src="/static/script.js"></script>
   </main>
 </body>
