@@ -133,11 +133,14 @@ ipython_config.py
 # PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
 __pypackages__/
 
-# Celery stuff
+# БЛОК: CELERY (ОЧЕРЕДЬ ЗАДАЧ)
+# Файл расписания периодических задач Celery
 celerybeat-schedule
+# PID-файл процесса Celery (содержит идентификатор запущенного процесса)
 celerybeat.pid
 
-# SageMath parsed files
+# БЛОК: SAGEMATH (МАТЕМАТИЧЕСКИЕ ВЫЧИСЛЕНИЯ)
+# Скомпилированные файлы SageMath (математические скрипты, преобразованные в Python)
 *.sage.py
 
 # БЛОК: ВИРТУАЛЬНЫЕ ОКРУЖЕНИЯ
@@ -150,33 +153,40 @@ ENV/
 env.bak/
 venv.bak/
 
-# Spyder project settings
+# БЛОК: SPYDER (IDE)
+# Настройки проекта Spyder
 .spyderproject
 .spyproject
 
-# Rope project settings
+# БЛОК: ROPE (РЕФАКТОРИНГ)
+# Данные проекта Rope
 .ropeproject
 
-# mkdocs documentation
+# БЛОК: MKDOCS (ДОКУМЕНТАЦИЯ)
+# Сборка сайта mkdocs
 /site
 
-# mypy
+# БЛОК: MYPY (СТАТИЧЕСКИЙ АНАЛИЗ ТИПОВ)
+# Кэш mypy
 .mypy_cache/
 .dmypy.json
 dmypy.json
 
-# Pyre type checker
+# БЛОК: PYRE (ПРОВЕРКА ТИПОВ)
+# Артефакты Pyre
 .pyre/
 
-# pytype static type analyzer
+# БЛОК: PYTYPE (СТАТИЧЕСКИЙ АНАЛИЗ ТИПОВ)
+# Артефакты pytype
 .pytype/
 
-# Cython debug symbols
+# БЛОК: CYTHON (ОТЛАДОЧНЫЕ СИМВОЛЫ)
+# Отладочные символы Cython
 cython_debug/
 
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
+# БЛОК: PYCHARM (IDE)
+#  Специфичный для JetBrains шаблон поддерживается в отдельном файле JetBrains.gitignore,
+#  который можно найти по адресу https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  и может быть добавлен в глобальный gitignore или объединён с этим файлом. Для более радикального
+#  варианта (не рекомендуется) можно раскомментировать следующую строку, чтобы игнорировать всю папку .idea.
 #.idea/
