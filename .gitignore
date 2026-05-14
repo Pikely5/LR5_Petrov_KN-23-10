@@ -1,12 +1,17 @@
-# Byte-compiled / optimized / DLL files
+# БЛОК: БАЙТ-КОМПИЛИРОВАННЫЕ И ОПТИМИЗИРОВАННЫЕ ФАЙЛЫ
+# Кэш Python, создаваемый при импорте модулей
 __pycache__/
+# Скомпилированные байт-кодом файлы Python
 *.py[cod]
+# Временные файлы, создаваемые при компиляции
 *$py.class
 
-# C extensions
+# БЛОК: РАСШИРЕНИЯ C
+# Скомпилированные библиотеки C
 *.so
 
-# Distribution / packaging
+# БЛОК: ДИСТРИБУЦИЯ И УПАКОВКА
+# Директории и файлы сборки пакетов
 .Python
 build/
 develop-eggs/
@@ -21,25 +26,29 @@ sdist/
 var/
 wheels/
 share/python-wheels/
+# Метаданные пакетов, устанавливаемых через pip
 *.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+# БЛОК: PyInstaller
+# Файлы, генерируемые PyInstaller при сборке исполняемого файла
 *.manifest
 *.spec
 
-# Installer logs
+# БЛОК: ЛОГИ УСТАНОВКИ ПАКЕТОВ
+# Логи pip при установке
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# БЛОК: ОТЧЁТЫ О ТЕСТИРОВАНИИ И ПОКРЫТИИ КОДА
+# Директория с HTML-отчётами о покрытии
 htmlcov/
+# Артефакты tox для автоматизации тестирования
 .tox/
 .nox/
+# Файлы с данными о покрытии кода
 .coverage
 .coverage.*
 .cache
@@ -47,65 +56,77 @@ nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
+# Кэш pytest и hypothesis
 .hypothesis/
 .pytest_cache/
 cover/
 
-# Translations
+# БЛОК: ПЕРЕВОДЫ (TRANSLATIONS)
+# Скомпилированные файлы переводов
 *.mo
 *.pot
 
-# Django stuff:
+# БЛОК: DJANGO
+# Логи Django-приложений
 *.log
+# Локальные настройки, специфичные для окружения разработчика
 local_settings.py
+# Файлы базы данных SQLite
 db.sqlite3
 db.sqlite3-journal
 
-# Flask stuff:
+# БЛОК: FLASK
+# Данные экземпляра Flask-приложения
 instance/
+# Кэш веб-ресурсов Flask
 .webassets-cache
 
-# Scrapy stuff:
+# БЛОК: SCRAPY
+# Артефакты фреймворка Scrapy
 .scrapy
 
-# Sphinx documentation
+# БЛОК: SPHINX (ДОКУМЕНТАЦИЯ)
+# Сборка документации Sphinx
 docs/_build/
 
-# PyBuilder
+# БЛОК: PyBuilder
+# Артефакты PyBuilder
 .pybuilder/
 target/
 
-# Jupyter Notebook
+# БЛОК: JUPYTER NOTEBOOK
+# Контрольные точки Jupyter
 .ipynb_checkpoints
 
-# IPython
+# БЛОК: IPYTHON
+# Профиль и настройки IPython по умолчанию
 profile_default/
 ipython_config.py
 
 # pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
+#   Для библиотеки или пакета может потребоваться игнорировать эти файлы, поскольку код
+#   предназначен для запуска в нескольких окружениях; в противном случае добавьте их в систему контроля версий:
 # .python-version
 
 # pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
+#   Согласно рекомендации pypa/pipenv#598, рекомендуется включать Pipfile.lock в систему контроля версий.
+#   Однако в случае совместной работы при наличии платформозависимых зависимостей или зависимостей,
+#   не имеющих кроссплатформенной поддержки, pipenv может установить неработающие зависимости
+#   или не установить все необходимые.
 #Pipfile.lock
 
 # poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
+#   Аналогично Pipfile.lock, обычно рекомендуется включать poetry.lock в систему контроля версий.
+#   Это особенно рекомендуется для бинарных пакетов для обеспечения воспроизводимости и реже
+#   применяется для библиотек.
 #   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
 #poetry.lock
 
 # pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
+#   Аналогично Pipfile.lock, обычно рекомендуется включать pdm.lock в систему контроля версий.
 #pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
+#   pdm хранит конфигурации уровня проекта в .pdm.toml, но рекомендуется не включать его
+#   в систему контроля версий.
 #   https://pdm.fming.dev/#use-with-ide
 .pdm.toml
 
@@ -119,7 +140,8 @@ celerybeat.pid
 # SageMath parsed files
 *.sage.py
 
-# Environments
+# БЛОК: ВИРТУАЛЬНЫЕ ОКРУЖЕНИЯ
+# Директории с виртуальными окружениями
 .env
 .venv
 env/
